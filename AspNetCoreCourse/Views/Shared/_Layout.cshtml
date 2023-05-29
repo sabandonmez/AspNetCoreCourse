@@ -18,12 +18,13 @@
   <div class="row">
  @*Side Bar Kenar Bölümü*@
 
-   <partial name="~/Views/Home/Partials/_SideBarPartial.cshtml" />
+   <partial name="~/Views/Home/Partials/_SideBarPartial.cshtml"  model="ViewBag.Image"/>
 
     <div class="col">
       @*Content*@
       @RenderBody()
     </div>
+
   </div>
 </div> <br />
 

@@ -8,18 +8,16 @@ namespace AspNetCoreCourse.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            ViewBag.Image =new List<string> { "img1","img2","img3" };
+
+            object o = new object();
+            return View(o);
         }
 
         public IActionResult Privacy()
         {
             return View();
         }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+ 
     }
 }
