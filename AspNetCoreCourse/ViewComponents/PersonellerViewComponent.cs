@@ -3,9 +3,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AspNetCoreCourse.ViewComponents
 {
+    //[NonViewComponent]
     public class PersonellerViewComponent : ViewComponent
     {
-        public IViewComponentResult Invoke()
+        public IViewComponentResult Invoke(int id)
         {
             List<Personel> personels = new List<Personel>
             {
