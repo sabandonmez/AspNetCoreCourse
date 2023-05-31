@@ -6,7 +6,7 @@ namespace AspNetCoreCourse.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Index(string id , string x , string y)
         {
             ViewBag.Image =new List<string> { "img1","img2","img3" };
 
