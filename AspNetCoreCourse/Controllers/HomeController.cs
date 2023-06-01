@@ -4,16 +4,16 @@ using System.Diagnostics;
 
 namespace AspNetCoreCourse.Controllers
 {
+
+    [Route("ana")]
     public class HomeController : Controller
     {
-        public IActionResult Index(string id , string x , string y)
-        {
-            ViewBag.Image =new List<string> { "img1","img2","img3" };
-
-            object o = new object();
-            return View(o);
+        [Route("in/{id:int?}")]
+        public IActionResult Index(int? id)
+        {  
+            return View();
         }
-
+        [Route("[action]")]
         public IActionResult Privacy()
         {
             return View();

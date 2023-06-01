@@ -1,7 +1,10 @@
+using AspNetCoreCourse.Constraints;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+builder.Services.Configure<RouteOptions>(options =>options.ConstraintMap.Add("custom",typeof(CustomConstraint)));
 builder.Services.AddControllersWithViews();
+
 
 var app = builder.Build();
 
@@ -22,8 +25,10 @@ app.UseAuthorization();
 
 app.UseEndpoints(endpoints => {
 
-    endpoints.MapControllerRoute("CustomParametreliRoute","{controller=Home}/{action=Index}/{id?}/{x?}/{y?}");
-    endpoints.MapDefaultControllerRoute();
+    //endpoints.MapControllerRoute("CustomParametreliRoute","{controller=Home}/{action=Index}/{id:custom?}/{x?}/{y:int?}");
+    //endpoints.MapDefaultControllerRoute();
+
+    endpoints.MapControllers();
 
 });
 
