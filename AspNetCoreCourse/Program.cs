@@ -1,9 +1,25 @@
 using AspNetCoreCourse.Constraints;
+using AspNetCoreCourse.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.Configure<RouteOptions>(options =>options.ConstraintMap.Add("custom",typeof(CustomConstraint)));
 builder.Services.AddControllersWithViews();
+builder.Services.Add(new ServiceDescriptor(typeof(ConsoleLog),new ConsoleLog())); //default olarak AddSingleton
+builder.Services.Add(new ServiceDescriptor(typeof(TextLog), new TextLog()));   //default olarak AddSingleton
+builder.Services.Add(new ServiceDescriptor(typeof(PerformanceLog), new PerformanceLog(12)));
+
+builder.Services.AddSingleton<ConsoleLog>();
+builder.Services.AddSingleton<TextLog>();
+builder.Services.AddSingleton<PerformanceLog>(p => new PerformanceLog(12));
+
+builder.Services.AddScoped<ConsoleLog>();
+builder.Services.AddScoped<TextLog>();
+builder.Services.AddScoped<PerformanceLog>(p => new PerformanceLog(12));
+
+builder.Services.AddTransient<ConsoleLog>();
+builder.Services.AddTransient<TextLog>();
+builder.Services.AddTransient<PerformanceLog>(p => new PerformanceLog(12));
 
 
 var app = builder.Build();
