@@ -1,4 +1,6 @@
-﻿namespace AspNetCoreCourse.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace AspNetCoreCourse.Models
 {
     public class Personel
     {
