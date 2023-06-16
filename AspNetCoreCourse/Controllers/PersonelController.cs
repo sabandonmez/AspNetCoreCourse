@@ -13,7 +13,8 @@ namespace AspNetCoreCourse.Controllers
         [HttpPost]
         public IActionResult Index(PersonelCreateViewModel personelCreateViewModel)
         {
-            //....
+            Personel personel = (Personel) personelCreateViewModel;
+            PersonelCreateViewModel viewModel = (PersonelCreateViewModel) personel;
             return View();
         }
         public IActionResult Listele()
