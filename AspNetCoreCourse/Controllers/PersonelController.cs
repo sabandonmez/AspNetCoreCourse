@@ -1,12 +1,20 @@
 ﻿using AspNetCoreCourse.Business;
 using AspNetCoreCourse.Models;
 using AspNetCoreCourse.Models.ViewModels;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AspNetCoreCourse.Controllers
 {
     public class PersonelController : Controller
     {
+        public IMapper Mapper { get; }
+
+        public PersonelController(IMapper mapper)
+        {
+            Mapper = mapper;
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -14,9 +22,8 @@ namespace AspNetCoreCourse.Controllers
         [HttpPost]
         public IActionResult Index(PersonelCreateViewModel viewModeldenGelecekVeriler)
         {
-       
-            PersonelCreateViewModel vm = TypeConversion.Conversion<Personel, PersonelCreateViewModel>(new Personel{ Adi = "dasda", Soyadi = "adsdads" });
-
+            Personel p = Mapper.Map<Personel>(viewModeldenGelecekVeriler);
+            PersonelCreateViewModel vm = Mapper.Map<PersonelCreateViewModel>(p);
             return View();
         }
         public IActionResult Listele()
