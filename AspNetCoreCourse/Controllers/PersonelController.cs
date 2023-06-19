@@ -1,4 +1,5 @@
-﻿using AspNetCoreCourse.Models;
+﻿using AspNetCoreCourse.Business;
+using AspNetCoreCourse.Models;
 using AspNetCoreCourse.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,10 +12,11 @@ namespace AspNetCoreCourse.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Index(PersonelCreateViewModel personelCreateViewModel)
+        public IActionResult Index(PersonelCreateViewModel viewModeldenGelecekVeriler)
         {
-            Personel personel = (Personel) personelCreateViewModel;
-            PersonelCreateViewModel viewModel = (PersonelCreateViewModel) personel;
+       
+            PersonelCreateViewModel vm = TypeConversion.Conversion<Personel, PersonelCreateViewModel>(new Personel{ Adi = "dasda", Soyadi = "adsdads" });
+
             return View();
         }
         public IActionResult Listele()
